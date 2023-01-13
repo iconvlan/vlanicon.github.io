@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    position: relative;
+  }
+
+  label {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  button {
+    background: rgba(255, 255, 255, 0.05);
+    width: 100%;
+    height: fit-content;
+    padding: 1em 0em;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: rgb(133, 71, 136);
+    font-weight: bold;
+  }
+
+  button:hover {
+    background: rgba(255, 255, 255, 0.33);
+    width: 100%;
+    height: fit-content;
+    padding: 1em 0em;
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.32);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.2px);
+    -webkit-backdrop-filter: blur(9.2px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  #circle1 {
+    position: absolute;
+    top: 25em;
+    left: 20em;
+    height: 16em;
+    width: 16em;
+    background: linear-gradient(#b802f0 0%, #9e04bd 10%, #71047d 50%, #43024a 100%);
+    border-radius: 50%;
+  }
+
+  #circle2 {
+    position: absolute;
+    top: 8em;
+    right: 100px;
+    height: 20em;
+    width: 20em;
+    background: linear-gradient(#b802f0 0%, #9e04bd 10%, #71047d 50%, #43024a 100%);
+    border-radius: 50%;
+  }
+
+  #circle3 {
+    position: absolute;
+    bottom: 10em;
+    right: 2em;
+    height: 8em;
+    width: 8em;
+    background: linear-gradient(#b802f0 0%, #9e04bd 10%, #71047d 50%, #43024a 100%);
+    border-radius: 50%;
+  }
+
+  #circle4 {
+    position: absolute;
+    top: -10em;
+    left: -8em;
+    height: 28em;
+    width: 28em;
+    background: linear-gradient(#b802f0 0%, #9e04bd 10%, #71047d 50%, #43024a 100%);
+    border-radius: 50%;
+  }
+
+  #copy-text {
+    display: none;
+  }
+
+  #notif {
+    display: none;
+    position: absolute;
+    top: 2em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: rgba(255, 255, 255, 0.32);
+    border-radius: 5px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.2px);
+    -webkit-backdrop-filter: blur(9.2px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 1em 2em;
+    color: rgb(97, 68, 141);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  input {
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 5px;
+    border: 0.5px solid gray;
+    margin: 5px 0;
+  }
+</style>
+
+<body style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;">
+  <div id="notif">
+    Berhasil Copy
+  </div>
+  <div id="circle1"></div>
+  <div id="circle2"></div>
+  <div id="circle3"></div>
+  <div id="circle4"></div>
+  <container class="container"
+    style="width: 40%; height: fit-content; min-height: 20em; padding: 2em; border-radius: 10px; overflow: hidden;">
+    <div style="display: flex; flex-direction: column; margin: 1rem 0 1rem 0;">
+      <label for="">VLAN</label>
+      <input type="number" id="input-vlan" />
+    </div>
+    <div style="display: flex; flex-direction: column; margin: 1rem 0 1rem 0;">
+      <label for="">Region</label>
+      <input type="text" id="input-region" />
+    </div>
+    <div style="display: flex; height: 20%; justify-content: end; flex-direction: column; margin: 1rem 0 1rem 0;">
+      <button onclick="submit()">LIHAT HASIL</button>
+    </div>
+    <h1 id="output-result" style="color: white; font-family: 'Courier New', Courier, monospace; text-align: center;">
+    </h1>
+    <div style="display: flex; height: 20%; justify-content: end; flex-direction: column; margin: 1rem 0 1rem 0;">
+      <button id="copy-text" style="justify-content: center; gap: 0.5rem;" onclick="copyText()">
+        <div style="position: relative; width: 10px; height: 10px;">
+          <?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 115.77 122.88"
+            style="enable-background:new 0 0 115.77 122.88" xml:space="preserve">
+            <style type="text/css">
+              .st0 {
+                fill-rule: evenodd;
+                clip-rule: evenodd;
+              }
+            </style>
+            <g>
+              <path class="st0"
+                d="M89.62,13.96v7.73h12.19h0.01v0.02c3.85,0.01,7.34,1.57,9.86,4.1c2.5,2.51,4.06,5.98,4.07,9.82h0.02v0.02 v73.27v0.01h-0.02c-0.01,3.84-1.57,7.33-4.1,9.86c-2.51,2.5-5.98,4.06-9.82,4.07v0.02h-0.02h-61.7H40.1v-0.02 c-3.84-0.01-7.34-1.57-9.86-4.1c-2.5-2.51-4.06-5.98-4.07-9.82h-0.02v-0.02V92.51H13.96h-0.01v-0.02c-3.84-0.01-7.34-1.57-9.86-4.1 c-2.5-2.51-4.06-5.98-4.07-9.82H0v-0.02V13.96v-0.01h0.02c0.01-3.85,1.58-7.34,4.1-9.86c2.51-2.5,5.98-4.06,9.82-4.07V0h0.02h61.7 h0.01v0.02c3.85,0.01,7.34,1.57,9.86,4.1c2.5,2.51,4.06,5.98,4.07,9.82h0.02V13.96L89.62,13.96z M79.04,21.69v-7.73v-0.02h0.02 c0-0.91-0.39-1.75-1.01-2.37c-0.61-0.61-1.46-1-2.37-1v0.02h-0.01h-61.7h-0.02v-0.02c-0.91,0-1.75,0.39-2.37,1.01 c-0.61,0.61-1,1.46-1,2.37h0.02v0.01v64.59v0.02h-0.02c0,0.91,0.39,1.75,1.01,2.37c0.61,0.61,1.46,1,2.37,1v-0.02h0.01h12.19V35.65 v-0.01h0.02c0.01-3.85,1.58-7.34,4.1-9.86c2.51-2.5,5.98-4.06,9.82-4.07v-0.02h0.02H79.04L79.04,21.69z M105.18,108.92V35.65v-0.02 h0.02c0-0.91-0.39-1.75-1.01-2.37c-0.61-0.61-1.46-1-2.37-1v0.02h-0.01h-61.7h-0.02v-0.02c-0.91,0-1.75,0.39-2.37,1.01 c-0.61,0.61-1,1.46-1,2.37h0.02v0.01v73.27v0.02h-0.02c0,0.91,0.39,1.75,1.01,2.37c0.61,0.61,1.46,1,2.37,1v-0.02h0.01h61.7h0.02 v0.02c0.91,0,1.75-0.39,2.37-1.01c0.61-0.61,1-1.46,1-2.37h-0.02V108.92L105.18,108.92z" />
+            </g>
+          </svg>
+        </div>
+        COPY
+      </button>
+    </div>
+  </container>
+</body>
+<script>
+  function submit() {
+    const data = [
+      {
+        "bali": [
+          {
+            list: [2908, 2909, 2910, 2914],
+            word: 'BALI-MTRM.PLN.CAB-MX204.BNG-CPE-01'
+          },
+          {
+            list: [2901, 2902, 2903],
+            word: 'BALI-KAPAL-NE8000.BNG-CPE-01'
+          }
+        ]
+      },
+      {
+        "rkal": [
+          {
+            list: [2925, 2901, 2903],
+            word: 'SBT-PAUHLIMO-NE8000.BNG-CPE-01'
+          },
+          {
+            list: [2801, 2902, 2904],
+            word: 'SBT-PEKANBARU-NE8000.BNG-CPE-01'
+          }
+        ]
+      },
+	  {
+        "sbt": [
+          {
+            list: [1111, 2222, 3333],
+            word: 'sumedang-001'
+          },
+          {
+            list: [4444, 5555, 666],
+            word: 'sumedang-002'
+          }
+        ]
+      }
+    ]
+    var result = false
+    var vlan = parseInt(document.getElementById("input-vlan").value)
+    var region = document.getElementById("input-region").value
+    var btnCopy = document.getElementById("copy-text")
+
+    data.forEach((res) => {
+      if (res[region.toLowerCase()]) {
+        res[region.toLowerCase()].forEach((res2) => {
+          if (res2.list.find((e) => e === vlan)) {
+            result = true
+            document.getElementById("output-result").innerHTML = res2.word
+            btnCopy.style.display = "flex"
+            console.log(result)
+          }
+        })
+      }
+    })
+    if (!result) document.getElementById("output-result").innerHTML = "Data Tidak Ditemukan"
+  }
+
+  function copyText() {
+    if (window.isSecureContext && navigator.clipboard) {
+      navigator.clipboard.writeText(document.getElementById("output-result").innerHTML);
+    } else {
+      unsecuredCopyToClipboard(document.getElementById("output-result").innerHTML);
+    }
+    document.getElementById("notif").style.display = "block"
+    setTimeout(() => {
+      document.getElementById("notif").style.display = "none"
+    }, 1000);
+  }
+</script>
+
+</html>
